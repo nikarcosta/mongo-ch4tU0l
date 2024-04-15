@@ -8,7 +8,7 @@ let db;
 
 try {
   await mongoClient.connect();
-  db = mongoClient.db("ch4tU0l");
+  db = mongoClient.db("chatUol");
 } catch (err) {
   console.log("Server Error!");
 }
