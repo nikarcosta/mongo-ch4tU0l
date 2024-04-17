@@ -23,3 +23,13 @@ export async function createParticipant(req, res) {
     return res.status(500).send(err.message);
   }
 }
+
+export async function getParticipants(_, res) {
+  try {
+    const result = await participantsRepositories.getParticipantsRepository();
+    const participants = await result.toArray();
+    return res.status(200).send(participants);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+}
