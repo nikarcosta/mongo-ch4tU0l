@@ -13,7 +13,7 @@ export async function createParticipant(req, res) {
     await participantsRepositories.createParticipantRepository(name);
 
     await messagesRepositories.postMessageRepository({
-      name,
+      from: name,
       to: "Todos",
       text: "entra na sala...",
       type: "status",
