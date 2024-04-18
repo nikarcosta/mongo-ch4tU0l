@@ -11,6 +11,21 @@ async function postMessageRepository({ from, to, text, type }) {
   });
 }
 
+async function getMessagesRepository(limit, user) {
+  return await db
+    .collection("messages")
+    .find({
+      $or: [
+        { from: { $eq: user } },
+        { to: { $eq: user } },
+        { type: "message" },
+      ],
+    })
+    .limit(limit)
+    .toArray();
+}
+
 export default {
   postMessageRepository,
+  getMessagesRepository,
 };
